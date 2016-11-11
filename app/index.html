@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
-     <script src="https://cdn.jsdelivr.net/lodash/4.16.6/lodash.min.js"></script>
-    <script src="js/libs.min.js"></script>
-    <script src="js/custom.js"></script>
     <!--[if lt IE 9]>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
@@ -21,9 +18,8 @@
     <script src="https://cdn.jsdelivr.net/lodash/4.16.6/lodash.min.js"></script>
     <script src="js/libs.min.js"></script>
     <script type="text/template" id="myTemplate">
-	   
 		<div class="row">
-				<div class = "remove"><h2>Drag to remove</h2></div>
+				<div id ="remove"><h2>Drag to remove</h2></div>
 				<div class="input-group">
 				  <input type="text" class="form-control" placeholder="I want to do ...">
 				  <span class="input-group-btn">
@@ -37,15 +33,14 @@
 			  <% }); %>
 			</div>
 		</div>	 
-     
 	</script>
-    <script src="js/custom.js"></script>
-    <script>
-		let todo = new Todo({
-	template:_.template(document.querySelector('#myTemplate').innerHTML)
-})
-
-todo.render()
+   <script src = 'js/todo.js'></script>
+   <script src="js/dragger.js"></script>
+   <script>
+			let todo = new Todo({
+				template:_.template(document.querySelector('#myTemplate').innerHTML)
+			})
+			todo.render()
 	</script>
 </body>
 </html>

@@ -21,7 +21,7 @@ var gulp = require('gulp'),
 //        .pipe(gulp.dest('app/'));
 //});
 gulp.task('js', function() {
-  return gulp.src('app/js/es6/*.js')               // #1. select all js files in the app folder
+  return gulp.src('app/js/ES6/*.js')               // #1. select all js files in the app folder
                           // #2. print each file in the stream
       .pipe(babel({ presets: ['es2015'] }))    // #3. transpile ES2015 to ES5 using ES2015 preset
       .pipe(gulp.dest('app/js'));               // #4. copy the results to the build folder

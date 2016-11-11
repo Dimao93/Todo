@@ -9,7 +9,7 @@ var Todo = function () {
 		_classCallCheck(this, Todo);
 
 		this.tmpl = options.template;
-		this.todos = [{ title: "Create Todo-list", done: true }, { title: "create drag", done: false }];
+		this.todos = [{ title: "Create todo-list", done: true }, { title: "Create drag-and-drop", done: true }];
 	}
 
 	_createClass(Todo, [{
@@ -75,47 +75,3 @@ document.onclick = function (e) {
 		}
 	}
 };
-
-//	document.querySelectorAll('.list-group-item')[0].onmousedown = function(el){
-//		let elemCoords = el.target.getBoundingClientRect();
-//		console.log(elemCoords.left)
-//	}
-
-document.onmousedown = function (e) {
-	var target = e.target;
-	var newWidth = document.querySelector('.input-group').offsetWidth;
-	var removeEl = document.querySelector('.remove');
-	if (target.className != 'list-group-item') {
-		return;
-	}
-	var targetCoords = target.getBoundingClientRect();
-	var shiftX = e.clientX - targetCoords.left;
-	document.onmousemove = function (e) {
-		var newX = e.pageX - shiftX;
-		newX > removeEl.offsetWidth ? removeEl.classList.remove('lightning') : removeEl.classList.add('lightning');
-		if (newX < 0) {
-			newX = 0;
-		}
-		var rigthEdge = document.body.offsetWidth - target.offsetWidth;
-		if (newX > rigthEdge) {
-			newX = rigthEdge;
-		}
-		target.classList.add('drop');
-		target.style.width = newWidth + 'px';
-		target.style.left = newX + 'px';
-	};
-	document.onmouseup = function (e) {
-		var newX = e.pageX - shiftX;
-
-		document.onmousemove = null;
-	};
-};
-
-//let template = _.template(document.querySelector('#myTemplate').innerHTML);
-//
-//
-//let obj = {
-//	title:[1,2,3,4,5]
-//};
-//let result = template(obj)
-//document.write(result)

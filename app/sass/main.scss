@@ -1,14 +1,10 @@
 //-------------base--------------------//
 @import"reset";
 @import"variables";
-@import"fonts";
 @import"mixins";
-@import"grid";
 @import"bootstrap.min.scss";
 
-//-------------modules---------------//
-@import"header";
-@import"footer";
+
 
 //---------------------Main Style--------------//
 *{
@@ -33,7 +29,7 @@ input[type=checkbox]{
 	float: right;
 	margin-top: 12px;
 }
-.remove{
+#remove{
 	display: inline-block;
     position: absolute;
     left: 0;
