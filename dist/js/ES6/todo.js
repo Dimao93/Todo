@@ -6,6 +6,18 @@
 			{title:"Create drag-and-drop",done:true}
 		]
 	}
+	 _setToLocalStorage(){
+		 let sTodos = JSON.stringify(todo.todos);
+		 localStorage.setItem('todos',sTodos);
+	 }
+	 _getFromLocalStorage(){
+		 if(window.localStorage.length){
+		 	todo.todos = JSON.parse(window.localStorage.getItem('todos')) 
+		 }
+	 }
+	 _clearFromLocalStorage(el){
+		window.localStorage.removeItem(el);
+	 }
 	render(){
 		let result = this.tmpl(this.todos)
 		let div = document.createElement('div');
@@ -30,11 +42,13 @@
 			this.clear()
 			this.render()
 		}
+		
 	}
 	remove(elem){
 		this.todos.splice(elem,1);
-		this.clear()
-		this.render()
+		this.clear();
+		this.render();
+		
 	}
 	_isDoneStyle(elem){
 		let titles = document.querySelectorAll('.item-title');
@@ -47,13 +61,5 @@
 }
 
 
-	document.onclick = function(e){
-		let target = e.target;
-		let doneList = document.querySelectorAll('.isDone');
-		for(let i=0;i<doneList.length;i++){
-			if(doneList[i]==target){
-				todo.isDone(i,target.checked)
-			}
-		}
-	}
+	
 	

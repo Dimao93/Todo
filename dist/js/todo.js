@@ -13,6 +13,24 @@ var Todo = function () {
 	}
 
 	_createClass(Todo, [{
+		key: "_setToLocalStorage",
+		value: function _setToLocalStorage() {
+			var sTodos = JSON.stringify(todo.todos);
+			localStorage.setItem('todos', sTodos);
+		}
+	}, {
+		key: "_getFromLocalStorage",
+		value: function _getFromLocalStorage() {
+			if (window.localStorage.length) {
+				todo.todos = JSON.parse(window.localStorage.getItem('todos'));
+			}
+		}
+	}, {
+		key: "_clearFromLocalStorage",
+		value: function _clearFromLocalStorage(el) {
+			window.localStorage.removeItem(el);
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var result = this.tmpl(this.todos);
@@ -65,13 +83,3 @@ var Todo = function () {
 
 	return Todo;
 }();
-
-document.onclick = function (e) {
-	var target = e.target;
-	var doneList = document.querySelectorAll('.isDone');
-	for (var i = 0; i < doneList.length; i++) {
-		if (doneList[i] == target) {
-			todo.isDone(i, target.checked);
-		}
-	}
-};
