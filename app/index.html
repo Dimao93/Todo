@@ -10,13 +10,7 @@
     <![endif]-->
 </head>
 <body>
-
-   
-  
-
-    
     <script src="https://cdn.jsdelivr.net/lodash/4.16.6/lodash.min.js"></script>
-    <script src="js/libs.min.js"></script>
     <script type="text/template" id="myTemplate">
 		<div class="row">
 				<div id ="remove"><h2>Drag to remove</h2></div>
@@ -40,7 +34,26 @@
 			let todo = new Todo({
 				template:_.template(document.querySelector('#myTemplate').innerHTML)
 			})
+			todo._getFromLocalStorage()
 			todo.render()
+			
+			document.onclick = function(e){
+				let target = e.target;
+				let doneList = document.querySelectorAll('.isDone');
+				for(let i=0;i<doneList.length;i++){
+					if(doneList[i]==target){
+						todo.isDone(i,target.checked)
+					}
+				}
+			}
+			window.onunload = function(){
+				todo._setToLocalStorage()
+			}
+	
+			
+				
+				
+		
 	</script>
 </body>
 </html>
