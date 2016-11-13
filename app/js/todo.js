@@ -21,7 +21,7 @@ var Todo = function () {
 	}, {
 		key: "_getFromLocalStorage",
 		value: function _getFromLocalStorage() {
-			if (window.localStorage.length) {
+			if (window.localStorage.getItem('todos')) {
 				todo.todos = JSON.parse(window.localStorage.getItem('todos'));
 			}
 		}
@@ -75,9 +75,9 @@ var Todo = function () {
 		}
 	}, {
 		key: "isDone",
-		value: function isDone(i, check) {
-			check ? this.todos[i].done = true : this.todos[i].done = false;
-			this._isDoneStyle(i);
+		value: function isDone(elem, check) {
+			check ? this.todos[elem].done = true : this.todos[elem].done = false;
+			this._isDoneStyle(elem);
 		}
 	}]);
 

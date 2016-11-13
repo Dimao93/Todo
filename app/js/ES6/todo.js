@@ -11,7 +11,7 @@
 		 localStorage.setItem('todos',sTodos);
 	 }
 	 _getFromLocalStorage(){
-		 if(window.localStorage.length){
+		 if(window.localStorage.getItem('todos')){
 		 	todo.todos = JSON.parse(window.localStorage.getItem('todos')) 
 		 }
 	 }
@@ -54,9 +54,9 @@
 		let titles = document.querySelectorAll('.item-title');
 		titles[elem].classList.toggle('done');
 	}
-	isDone(i,check){
-		check ? this.todos[i].done = true : this.todos[i].done = false;
-		this._isDoneStyle(i);
+	isDone(elem,check){
+		check ? this.todos[elem].done = true : this.todos[elem].done = false;
+		this._isDoneStyle(elem);
 	}
 }
 

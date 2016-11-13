@@ -5588,7 +5588,7 @@ button.close {
 
 .todo-wrapper {
   max-width: 900px;
-  margin: auto; }
+  margin: 0 auto; }
 
 .input-group {
   margin-top: 20px;
